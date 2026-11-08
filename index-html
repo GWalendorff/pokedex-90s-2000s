@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Configurações básicas da página -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Descrição que aparece nos resultados de busca -->
+  <meta name="description" content="Pokédex dos anos 90 e 2000: cards dinâmicos com dados em tempo real da PokéAPI." />
+
+  <title>Pokédex 90s &amp; 2000s — Cards da PokéAPI</title>
+
+  <!-- Conexão e fontes utilizadas no visual do site -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <!-- Arquivo responsável pela aparência da página -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- Link para ir diretamente até a lista de Pokémon -->
+  <a class="skip-link" href="#personagens">Ir para os cards</a>
+
+  <!-- Cabeçalho com o título e a apresentação do projeto -->
+  <header class="topo">
+    <div class="container topo-conteudo">
+
+      <!-- Elemento decorativo da Pokébola -->
+      <div class="pokebola" aria-hidden="true"></div>
+
+      <div class="topo-texto">
+        <h1>Pokédex 90s &amp; 2000s</h1>
+        <p>
+          Os 251 Pokémon da 1ª e 2ª gerações, de 1996 a 2000.
+          Cada card é montado pelo JavaScript com dados buscados ao vivo na PokéAPI.
+        </p>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Conteúdo principal do site -->
+  <main class="container">
+
+    <!-- Área de busca e filtros dos Pokémon -->
+    <form class="controles" id="form-filtros" role="search" aria-label="Filtros dos Pokémon">
+
+      <!-- Campo para pesquisar pelo nome ou número -->
+      <div class="campo campo-busca">
+        <label for="busca">Buscar por nome ou número</label>
+        <input type="search" id="busca" placeholder="Ex.: pikachu, 25" autocomplete="off" />
+      </div>
+
+      <!-- Seleção da geração -->
+      <div class="campo">
+        <label for="geracao">Geração</label>
+        <select id="geracao">
+          <option value="">Todas (1ª e 2ª)</option>
+          <option value="1">1ª geração — anos 90</option>
+          <option value="2">2ª geração — ano 2000</option>
+        </select>
+      </div>
+
+      <!-- Seleção do tipo do Pokémon -->
+      <div class="campo">
+        <label for="tipo">Tipo</label>
+        <select id="tipo">
+          <option value="">Todos os tipos</option>
+        </select>
+      </div>
+
+      <!-- Botões de favoritos e limpeza dos filtros -->
+      <div class="acoes">
+        <button type="button" id="btn-favoritos" class="btn btn-amarelo" aria-pressed="false">
+          Favoritos (<span id="contador-favoritos">0</span>)
+        </button>
+
+        <button type="button" id="btn-limpar" class="btn btn-contorno">
+          Limpar filtros
+        </button>
+      </div>
+
+    </form>
+
+    <!-- Texto que informa a quantidade de Pokémon encontrados -->
+    <p id="resumo" class="resumo" role="status" aria-live="polite"></p>
+
+    <!-- Área onde o JavaScript insere os cards criados com os dados da API -->
+    <section id="personagens" class="grade" aria-busy="true" aria-label="Lista de Pokémon"></section>
+
+    <!-- Botões para navegar entre as páginas de resultados -->
+    <nav class="paginacao" aria-label="Paginação">
+      <button type="button" id="btn-anterior" class="btn btn-amarelo">
+        Anterior
+      </button>
+
+      <span id="indicador-pagina" aria-live="polite">Página 1</span>
+
+      <button type="button" id="btn-proxima" class="btn btn-amarelo">
+        Próxima
+      </button>
+    </nav>
+
+    <!-- Mensagem exibida caso o navegador esteja com JavaScript desativado -->
+    <noscript>
+      <p class="aviso">
+        Este site precisa de JavaScript ativado para carregar os cards da API.
+      </p>
+    </noscript>
+
+  </main>
+
+  <!-- Rodapé com a fonte dos dados e identificação do projeto -->
+  <footer class="rodape">
+    <div class="container">
+      <p>
+        Dados fornecidos pela
+        <a href="https://pokeapi.co/" target="_blank" rel="noopener">PokéAPI</a>.
+        Pokémon e seus personagens pertencem à Nintendo, Game Freak e Creatures.
+      </p>
+
+      <p>Projeto acadêmico UniFECAF — Gabriel Augusto Walendorff.</p>
+    </div>
+  </footer>
+
+  <!-- Arquivo JavaScript que busca os dados e monta os cards -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>
